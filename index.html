@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,26 +10,31 @@
         * {
             box-sizing: border-box;
         }
+
         body {
             min-height: 100vh;
             margin: 0;
             display: grid;
             grid-template-rows: auto 1fr;
         }
+
         main {
             justify-self: center;
             display: grid;
             grid-template-rows: 1fr auto;
         }
+
         button {
             min-height: 44px;
             max-width: 85ch;
             justify-self: center;
         }
+
         header {
             max-width: 80ch;
             justify-self: center;
         }
+
         img {
             align-self: center;
             justify-self: center;
@@ -38,8 +44,11 @@
     </style>
     <title>Document</title>
 </head>
+
 <body>
-    <header><h1>Cat generator</h1></header>
+    <header>
+        <h1>Cat generator</h1>
+    </header>
     <main>
         <img src="#" alt="Some random cats">
         <button>More Cats</button>
@@ -50,9 +59,10 @@
         const API = 'https://api.giphy.com/v1/gifs/translate?api_key=BlVRxPQsFmQQPQQNeQ0kKmEsq366A9GU&s=cats'
 
         async function generate() {
-            let response = await fetch(API, {mode: 'cors'})
+            let response = await fetch(API, { mode: 'cors' })
             let responseJSON = await response.json()
-            
+
+            console.log(responseJSON);
             img.src = responseJSON.data.images.original.url
         }
 
@@ -61,4 +71,5 @@
         button.addEventListener('click', generate)
     </script>
 </body>
+
 </html>
